@@ -44,6 +44,7 @@ const ProductShowcase = () => {
   const handleViewAllProducts = () => {
     alert('This would navigate to a complete product catalog page with filters for:\n\n• Premium Textiles\n• Luxury Rexines\n• High-Quality Fibers\n• Specialty Blends\n\nWith advanced search and filtering options.');
   };
+
   return (
     <section id="products" className="py-12 sm:py-16 lg:py-24 xl:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,27 +61,27 @@ const ProductShowcase = () => {
           {products.map((product, index) => (
             <div key={product.id} className="group cursor-pointer"
               onClick={() => console.log(`Product ${product.name} clicked`)}>
-                onClick={() => handleProductCategory('Premium Textiles')} 
-            <button onClick={() => handleProductCategory('Premium Textiles')} 
+              <div className="relative overflow-hidden">
+                <div className="aspect-w-1 aspect-h-1">
                   <img
                     src={product.image}
                     alt={product.name}
-                onClick={() => handleProductCategory('Rexines')} 
+                    className={`w-full object-cover transform group-hover:scale-105 transition-transform duration-500 ${
                       index % 2 === 0 ? 'h-64 sm:h-72 lg:h-80 xl:h-96' : 'h-56 sm:h-64 lg:h-72 xl:h-80'
                     }`}
                   />
                 </div>
-                onClick={() => handleProductCategory('Fibers')} 
+                <div className="p-4">
                   <h3 className="text-sm sm:text-base lg:text-lg font-light text-gray-900 mb-2 sm:mb-3 lg:mb-4 uppercase tracking-[0.1em] sm:tracking-[0.15em] leading-tight">
-            <button onClick={() => handleProductCategory('Fibers')} 
+                    {product.name}
                   </h3>
                   <p className="text-gray-600 text-xs sm:text-sm lg:text-sm leading-relaxed font-light tracking-wide">
                     {product.description}
-            <button onClick={() => handleProductCategory('Exclusives')} 
+                  </p>
                 </div>
               </div>
             </div>
-                onClick={() => handleProductCategory('Exclusives')} 
+          ))}
         </div>
 
         {/* View All Button */}
