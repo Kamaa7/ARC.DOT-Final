@@ -27,7 +27,8 @@ const FeatureSection = () => {
 
   return (
     <section className="py-0">
-      <div className="grid grid-cols-1 lg:grid-cols-3">
+      {/* Mobile and Tablet Layout */}
+      <div className="lg:hidden">
         {features.map((feature, index) => (
           <div key={feature.id} className="relative group overflow-hidden cursor-pointer"
             onClick={() => console.log(`Feature ${feature.title} clicked`)}>
@@ -35,16 +36,43 @@ const FeatureSection = () => {
               <img
                 src={feature.image}
                 alt={feature.title}
-                className="w-full h-[600px] object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-[400px] sm:h-[500px] md:h-[600px] object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+            </div>
+            <div className="absolute inset-0 flex items-end p-6 sm:p-8 md:p-12">
+              <div className="text-white space-y-3 sm:space-y-4">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-light tracking-[0.1em] sm:tracking-[0.15em] leading-tight">
+                  {feature.title}
+                </h3>
+                <p className="text-xs sm:text-sm md:text-base leading-relaxed opacity-90 font-light tracking-wide line-clamp-4">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop Layout */}
+      <div className="hidden lg:grid lg:grid-cols-3">
+        {features.map((feature, index) => (
+          <div key={feature.id} className="relative group overflow-hidden cursor-pointer"
+            onClick={() => console.log(`Feature ${feature.title} clicked`)}>
+            <div className="relative">
+              <img
+                src={feature.image}
+                alt={feature.title}
+                className="w-full h-[600px] xl:h-[700px] object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-black bg-opacity-40"></div>
             </div>
-            <div className="absolute inset-0 flex items-end p-8 lg:p-12">
+            <div className="absolute inset-0 flex items-end p-8 lg:p-10 xl:p-12">
               <div className="text-white space-y-4 max-w-sm">
-                <h3 className="text-2xl lg:text-3xl font-light tracking-[0.15em] leading-tight">
+                <h3 className="text-2xl lg:text-3xl xl:text-4xl font-light tracking-[0.15em] leading-tight">
                   {feature.title}
                 </h3>
-                <p className="text-xs lg:text-sm leading-relaxed opacity-90 font-light tracking-wide">
+                <p className="text-xs lg:text-sm xl:text-base leading-relaxed opacity-90 font-light tracking-wide">
                   {feature.description}
                 </p>
               </div>

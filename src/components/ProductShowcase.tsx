@@ -33,39 +33,52 @@ const ProductShowcase = () => {
   ];
 
   return (
-    <section id="products" className="py-20 lg:py-32 bg-white">
+    <section id="products" className="py-12 sm:py-16 lg:py-24 xl:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 lg:mb-24">
-          <h2 className="text-4xl lg:text-6xl font-light text-gray-900 mb-4 tracking-[0.2em]">
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20 xl:mb-24">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 mb-3 sm:mb-4 tracking-[0.1em] sm:tracking-[0.15em] lg:tracking-[0.2em] px-4">
             THE BESTSELLING COLLECTION
           </h2>
+          <p className="text-sm sm:text-base lg:text-lg text-gray-600 font-light tracking-wide max-w-2xl mx-auto px-4">
+            Discover our most popular premium textiles and materials
+          </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {products.map((product, index) => (
             <div key={product.id} className="group cursor-pointer"
               onClick={() => console.log(`Product ${product.name} clicked`)}>
-              <div className="bg-white overflow-hidden hover:shadow-2xl transition-all duration-500">
+              <div className="bg-white overflow-hidden hover:shadow-xl transition-all duration-500 rounded-lg sm:rounded-none">
                 <div className="overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.name}
                     className={`w-full object-cover group-hover:scale-110 transition-transform duration-700 ${
-                      index % 2 === 0 ? 'h-80 lg:h-96' : 'h-64 lg:h-80'
+                      index % 2 === 0 ? 'h-64 sm:h-72 lg:h-80 xl:h-96' : 'h-56 sm:h-64 lg:h-72 xl:h-80'
                     }`}
                   />
                 </div>
-                <div className="p-6 lg:p-8 text-center">
-                  <h3 className="text-base lg:text-lg font-light text-gray-900 mb-3 lg:mb-4 uppercase tracking-[0.15em]">
+                <div className="p-4 sm:p-6 lg:p-8 text-center">
+                  <h3 className="text-sm sm:text-base lg:text-lg font-light text-gray-900 mb-2 sm:mb-3 lg:mb-4 uppercase tracking-[0.1em] sm:tracking-[0.15em] leading-tight">
                     {product.name}
                   </h3>
-                  <p className="text-gray-600 text-xs lg:text-sm leading-relaxed font-light tracking-wide">
+                  <p className="text-gray-600 text-xs sm:text-sm lg:text-sm leading-relaxed font-light tracking-wide">
                     {product.description}
                   </p>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* View All Button */}
+        <div className="text-center mt-12 sm:mt-16 lg:mt-20">
+          <button 
+            onClick={() => console.log('View all products clicked')}
+            className="border border-gray-900 text-gray-900 px-6 sm:px-8 lg:px-12 py-3 sm:py-4 font-light tracking-[0.1em] sm:tracking-[0.15em] text-sm sm:text-base hover:bg-gray-900 hover:text-white transition-all duration-300"
+          >
+            VIEW ALL PRODUCTS
+          </button>
         </div>
       </div>
     </section>
