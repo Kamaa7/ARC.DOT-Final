@@ -88,7 +88,8 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
                   <div
                     key={index}
                     onClick={() => {
-                      console.log(`Selected: ${result}`);
+                      console.log(`Selected product: ${result}`);
+                      alert(`Opening ${result} product page...`);
                       onClose();
                     }}
                     className="p-3 hover:bg-gray-50 cursor-pointer rounded-lg transition-colors border-b border-gray-100 last:border-b-0"

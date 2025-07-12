@@ -45,29 +45,45 @@ const CollectionsSection = () => {
         </div>
 
         {/* Mobile and Tablet: Single Column */}
-        <div className="flex flex-col gap-6 sm:gap-8 lg:hidden">
+        <div className="flex flex-col gap-6 sm:gap-8 xl:hidden">
           {[anyoneEveryone7, anyoneEveryone5, anyoneEveryone6].map((img, idx) => (
-            <div key={idx} className="w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-lg group cursor-pointer"
-              onClick={() => console.log(`Collection ${idx + 1} clicked`)}>
+            <div key={idx} className="w-full aspect-[3/2] sm:aspect-[5/3] md:aspect-[2/1] overflow-hidden rounded-lg group cursor-pointer relative"
+              onClick={() => {
+                console.log(`Collection ${idx + 1} clicked`);
+                alert(`Opening Collection ${idx + 1} gallery...`);
+              }}>
               <img
                 src={img}
                 alt={`Collection ${idx + 1}`}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
+              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                <span className="text-white text-lg font-light tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  VIEW COLLECTION
+                </span>
+              </div>
             </div>
           ))}
         </div>
 
         {/* Desktop: Grid Layout */}
-        <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="hidden xl:grid xl:grid-cols-3 gap-8">
           {[anyoneEveryone7, anyoneEveryone5, anyoneEveryone6].map((img, idx) => (
-            <div key={idx} className="w-full aspect-[4/3] overflow-hidden rounded-lg group cursor-pointer"
-              onClick={() => console.log(`Collection ${idx + 1} clicked`)}>
+            <div key={idx} className="w-full aspect-[4/3] overflow-hidden rounded-lg group cursor-pointer relative"
+              onClick={() => {
+                console.log(`Collection ${idx + 1} clicked`);
+                alert(`Opening Collection ${idx + 1} gallery...`);
+              }}>
               <img
                 src={img}
                 alt={`Collection ${idx + 1}`}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
+              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                <span className="text-white text-xl font-light tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  VIEW COLLECTION
+                </span>
+              </div>
             </div>
           ))}
         </div>
@@ -75,7 +91,10 @@ const CollectionsSection = () => {
         {/* Call to Action */}
         <div className="text-center mt-12 sm:mt-16 lg:mt-20">
           <button 
-            onClick={() => console.log('View all collections clicked')}
+            onClick={() => {
+              console.log('View all collections clicked');
+              alert('Opening complete collections gallery...');
+            }}
             className="bg-gray-900 text-white px-6 sm:px-8 lg:px-12 py-3 sm:py-4 font-light tracking-[0.1em] sm:tracking-[0.15em] text-sm sm:text-base hover:bg-gray-800 transition-all duration-300 transform hover:scale-105"
           >
             VIEW ALL COLLECTIONS

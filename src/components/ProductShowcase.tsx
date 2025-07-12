@@ -47,7 +47,11 @@ const ProductShowcase = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {products.map((product, index) => (
             <div key={product.id} className="group cursor-pointer"
-              onClick={() => console.log(`Product ${product.name} clicked`)}>
+              onClick={() => {
+                console.log(`Product ${product.name} clicked`);
+                // Simulate product detail view
+                alert(`Opening ${product.name} details...`);
+              }}>
               <div className="bg-white overflow-hidden hover:shadow-xl transition-all duration-500 rounded-lg sm:rounded-none">
                 <div className="overflow-hidden">
                   <img
@@ -65,6 +69,9 @@ const ProductShowcase = () => {
                   <p className="text-gray-600 text-xs sm:text-sm lg:text-sm leading-relaxed font-light tracking-wide">
                     {product.description}
                   </p>
+                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-xs text-gray-500 font-light tracking-wider">CLICK TO VIEW DETAILS</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -74,7 +81,10 @@ const ProductShowcase = () => {
         {/* View All Button */}
         <div className="text-center mt-12 sm:mt-16 lg:mt-20">
           <button 
-            onClick={() => console.log('View all products clicked')}
+            onClick={() => {
+              console.log('View all products clicked');
+              alert('Redirecting to full product catalog...');
+            }}
             className="border border-gray-900 text-gray-900 px-6 sm:px-8 lg:px-12 py-3 sm:py-4 font-light tracking-[0.1em] sm:tracking-[0.15em] text-sm sm:text-base hover:bg-gray-900 hover:text-white transition-all duration-300"
           >
             VIEW ALL PRODUCTS

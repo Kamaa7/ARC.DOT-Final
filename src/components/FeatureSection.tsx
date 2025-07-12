@@ -31,7 +31,10 @@ const FeatureSection = () => {
       <div className="lg:hidden">
         {features.map((feature, index) => (
           <div key={feature.id} className="relative group overflow-hidden cursor-pointer"
-            onClick={() => console.log(`Feature ${feature.title} clicked`)}>
+            onClick={() => {
+              console.log(`Feature ${feature.title} clicked`);
+              alert(`Learn more about ${feature.title}...`);
+            }}>
             <div className="relative">
               <img
                 src={feature.image}
@@ -39,6 +42,9 @@ const FeatureSection = () => {
                 className="w-full h-[400px] sm:h-[500px] md:h-[600px] object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+              <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="bg-white text-black px-3 py-1 text-xs font-light tracking-wider">LEARN MORE</span>
+              </div>
             </div>
             <div className="absolute inset-0 flex items-end p-6 sm:p-8 md:p-12">
               <div className="text-white space-y-3 sm:space-y-4">
@@ -58,7 +64,10 @@ const FeatureSection = () => {
       <div className="hidden lg:grid lg:grid-cols-3">
         {features.map((feature, index) => (
           <div key={feature.id} className="relative group overflow-hidden cursor-pointer"
-            onClick={() => console.log(`Feature ${feature.title} clicked`)}>
+            onClick={() => {
+              console.log(`Feature ${feature.title} clicked`);
+              alert(`Learn more about ${feature.title}...`);
+            }}>
             <div className="relative">
               <img
                 src={feature.image}
@@ -66,6 +75,9 @@ const FeatureSection = () => {
                 className="w-full h-[600px] xl:h-[700px] object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+              <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="bg-white text-black px-4 py-2 text-sm font-light tracking-wider">LEARN MORE</span>
+              </div>
             </div>
             <div className="absolute inset-0 flex items-end p-8 lg:p-10 xl:p-12">
               <div className="text-white space-y-4 max-w-sm">

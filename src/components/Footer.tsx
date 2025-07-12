@@ -7,7 +7,26 @@ const Footer = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!email) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    console.log(`Newsletter subscription: ${email}`);
     setSubscribed(true);
+    setTimeout(() => {
+      setEmail('');
+      setSubscribed(false);
+    }, 3000);
+  };
+
+  const handleLinkClick = (linkName: string) => {
+    console.log(`${linkName} clicked`);
+    alert(`Opening ${linkName} page...`);
+  };
+
+  const handleSocialClick = (platform: string) => {
+    console.log(`${platform} clicked`);
+    alert(`Opening ${platform} page...`);
   };
 
   return (
@@ -22,35 +41,35 @@ const Footer = () => {
           {/* Mobile: Stacked Links */}
           <div className="sm:hidden space-y-4">
             <div className="space-y-3">
-              <button onClick={() => console.log('Contact us clicked')} 
+              <button onClick={() => handleLinkClick('Contact us')} 
                 className="block text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm">
                 Contact us
               </button>
-              <button onClick={() => console.log('Our Story clicked')} 
+              <button onClick={() => handleLinkClick('Our Story')} 
                 className="block text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm">
                 Our Story
               </button>
-              <button onClick={() => console.log('Terms clicked')} 
+              <button onClick={() => handleLinkClick('Terms of Service')} 
                 className="block text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm">
                 Terms of Service
               </button>
-              <button onClick={() => console.log('Refund policy clicked')} 
+              <button onClick={() => handleLinkClick('Refund policy')} 
                 className="block text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm">
                 Refund policy
               </button>
-              <button onClick={() => console.log('Shipping clicked')} 
+              <button onClick={() => handleLinkClick('Shipping Methods')} 
                 className="block text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm">
                 Shipping Methods
               </button>
-              <button onClick={() => console.log('FAQ clicked')} 
+              <button onClick={() => handleLinkClick('FAQ')} 
                 className="block text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm">
                 FAQ's
               </button>
-              <button onClick={() => console.log('Stories clicked')} 
+              <button onClick={() => handleLinkClick('Arc Dot Stories')} 
                 className="block text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm">
                 Arc Dot Stories
               </button>
-              <button onClick={() => console.log('Privacy clicked')} 
+              <button onClick={() => handleLinkClick('Privacy Policy')} 
                 className="block text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm">
                 Privacy Policy
               </button>
@@ -61,27 +80,27 @@ const Footer = () => {
           <div className="hidden sm:block">
             {/* First Row of Links */}
             <div className="flex flex-wrap justify-center gap-x-6 lg:gap-x-12 gap-y-3 sm:gap-y-4 mb-4 sm:mb-6 lg:mb-8">
-              <button onClick={() => console.log('Contact us clicked')} 
+              <button onClick={() => handleLinkClick('Contact us')} 
                 className="text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm lg:text-base">
                 Contact us
               </button>
-              <button onClick={() => console.log('Our Story clicked')} 
+              <button onClick={() => handleLinkClick('Our Story')} 
                 className="text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm lg:text-base">
                 Our Story
               </button>
-              <button onClick={() => console.log('Terms clicked')} 
+              <button onClick={() => handleLinkClick('Terms of Service')} 
                 className="text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm lg:text-base">
                 Terms of Service
               </button>
-              <button onClick={() => console.log('Refund policy clicked')} 
+              <button onClick={() => handleLinkClick('Refund policy')} 
                 className="text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm lg:text-base">
                 Refund policy
               </button>
-              <button onClick={() => console.log('Shipping clicked')} 
+              <button onClick={() => handleLinkClick('Shipping Methods')} 
                 className="text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm lg:text-base">
                 Shipping Methods
               </button>
-              <button onClick={() => console.log('FAQ clicked')} 
+              <button onClick={() => handleLinkClick('FAQ')} 
                 className="text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm lg:text-base">
                 FAQ's
               </button>
@@ -89,11 +108,11 @@ const Footer = () => {
             
             {/* Second Row of Links */}
             <div className="flex flex-wrap justify-center gap-x-6 lg:gap-x-12 gap-y-3 sm:gap-y-4">
-              <button onClick={() => console.log('Stories clicked')} 
+              <button onClick={() => handleLinkClick('Arc Dot Stories')} 
                 className="text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm lg:text-base">
                 Arc Dot Stories
               </button>
-              <button onClick={() => console.log('Privacy clicked')} 
+              <button onClick={() => handleLinkClick('Privacy Policy')} 
                 className="text-gray-600 hover:text-black transition-colors font-light tracking-wide text-sm lg:text-base">
                 Privacy Policy
               </button>
@@ -133,11 +152,11 @@ const Footer = () => {
         
         {/* Social Media Icons */}
         <div className="flex justify-center space-x-6 sm:space-x-8 lg:space-x-10">
-          <Facebook onClick={() => console.log('Facebook clicked')} 
+          <Facebook onClick={() => handleSocialClick('Facebook')} 
             className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-gray-600 hover:text-black cursor-pointer transition-colors" />
-          <Instagram onClick={() => console.log('Instagram clicked')} 
+          <Instagram onClick={() => handleSocialClick('Instagram')} 
             className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-gray-600 hover:text-black cursor-pointer transition-colors" />
-          <Youtube onClick={() => console.log('Youtube clicked')} 
+          <Youtube onClick={() => handleSocialClick('Youtube')} 
             className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-gray-600 hover:text-black cursor-pointer transition-colors" />
         </div>
 

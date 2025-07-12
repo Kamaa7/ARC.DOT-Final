@@ -2,6 +2,12 @@ import React from 'react';
 import anyoneEveryone9 from '../assets/anyone-everyone9.jpg';
 
 const HeroSection = () => {
+  const scrollToProducts = () => {
+    const element = document.getElementById('products');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
   return (
     <section
       className="min-h-screen flex items-center relative overflow-hidden"
@@ -13,15 +19,19 @@ const HeroSection = () => {
         <div className="text-center space-y-6 sm:space-y-8 lg:space-y-12 relative z-10">
           <div className="space-y-4 sm:space-y-6 lg:space-y-8">
             <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-light text-white tracking-[0.1em] sm:tracking-[0.15em] lg:tracking-[0.2em] leading-tight">
+              ARC DOT
             </h1>
             
             <div className="space-y-4 sm:space-y-6 lg:space-y-8">
               <h2 className="text-white text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light leading-tight tracking-wide px-4">
+                Premium Textiles & Fibers
                 <br />
-                <span className="font-normal text-yellow-400"></span>
+                <span className="font-normal text-yellow-400">Crafted for Excellence</span>
               </h2>
               
               <p className="text-gray-200 text-sm sm:text-base lg:text-lg leading-relaxed font-light tracking-wide max-w-xl lg:max-w-2xl mx-auto px-4">
+                Discover our exclusive collection of premium textiles, luxury rexines, and high-quality fibers. 
+                Trusted by designers and manufacturers worldwide for uncompromising quality and innovation.
               </p>
             </div>
             
@@ -40,7 +50,7 @@ const HeroSection = () => {
             {/* CTA Button */}
             <div className="pt-4 sm:pt-6 lg:pt-8">
               <button 
-                onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={scrollToProducts}
                 className="bg-yellow-400 text-black px-6 sm:px-8 lg:px-12 py-3 sm:py-4 font-light tracking-[0.1em] sm:tracking-[0.15em] text-sm sm:text-base hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105"
               >
                 EXPLORE COLLECTION
