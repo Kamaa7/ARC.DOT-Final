@@ -13,19 +13,15 @@ const HeroSection = () => {
         <div className="text-center space-y-6 sm:space-y-8 lg:space-y-12 relative z-10">
           <div className="space-y-4 sm:space-y-6 lg:space-y-8">
             <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-light text-white tracking-[0.1em] sm:tracking-[0.15em] lg:tracking-[0.2em] leading-tight">
-              PREMIUM TEXTILES
             </h1>
             
             <div className="space-y-4 sm:space-y-6 lg:space-y-8">
               <h2 className="text-white text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light leading-tight tracking-wide px-4">
-                Crafting Excellence in Every Fiber
                 <br />
-                <span className="font-normal text-yellow-400">Where Quality Meets Innovation</span>
+                <span className="font-normal text-yellow-400"></span>
               </h2>
               
               <p className="text-gray-200 text-sm sm:text-base lg:text-lg leading-relaxed font-light tracking-wide max-w-xl lg:max-w-2xl mx-auto px-4">
-                Discover our premium collection of textiles, rexines, and fibers. 
-                Each piece is carefully crafted to meet the highest standards of quality and design.
               </p>
             </div>
             
