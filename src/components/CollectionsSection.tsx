@@ -47,7 +47,7 @@ const CollectionsSection = () => {
         {/* Mobile and Tablet: Single Column */}
         <div className="flex flex-col gap-6 sm:gap-8 xl:hidden">
           {[anyoneEveryone7, anyoneEveryone5, anyoneEveryone6].map((img, idx) => (
-            <div key={idx} className="w-full aspect-[3/2] sm:aspect-[5/3] md:aspect-[2/1] overflow-hidden rounded-lg group cursor-pointer relative"
+            <div key={idx} className="w-full aspect-[3/2] sm:aspect-[5/3] md:aspect-[2/1] overflow-hidden rounded-lg group cursor-pointer relative bg-gray-100"
               onClick={() => {
                 console.log(`Collection ${idx + 1} clicked`);
                 alert(`Opening Collection ${idx + 1} gallery...`);
@@ -57,10 +57,10 @@ const CollectionsSection = () => {
                 alt={`Collection ${idx + 1}`}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                <span className="text-white text-lg font-light tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                <button className="bg-white text-black px-4 sm:px-6 py-2 sm:py-3 font-light tracking-wider text-sm sm:text-base opacity-90 group-hover:opacity-100 transform group-hover:scale-105 transition-all duration-300 hover:bg-gray-100">
                   VIEW COLLECTION
-                </span>
+                </button>
               </div>
             </div>
           ))}
@@ -69,7 +69,7 @@ const CollectionsSection = () => {
         {/* Desktop: Grid Layout */}
         <div className="hidden xl:grid xl:grid-cols-3 gap-8">
           {[anyoneEveryone7, anyoneEveryone5, anyoneEveryone6].map((img, idx) => (
-            <div key={idx} className="w-full aspect-[4/3] overflow-hidden rounded-lg group cursor-pointer relative"
+            <div key={idx} className="w-full aspect-[4/3] overflow-hidden rounded-lg group cursor-pointer relative bg-gray-100"
               onClick={() => {
                 console.log(`Collection ${idx + 1} clicked`);
                 alert(`Opening Collection ${idx + 1} gallery...`);
@@ -79,10 +79,10 @@ const CollectionsSection = () => {
                 alt={`Collection ${idx + 1}`}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                <span className="text-white text-xl font-light tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                <button className="bg-white text-black px-6 py-3 font-light tracking-wider text-base opacity-90 group-hover:opacity-100 transform group-hover:scale-105 transition-all duration-300 hover:bg-gray-100">
                   VIEW COLLECTION
-                </span>
+                </button>
               </div>
             </div>
           ))}

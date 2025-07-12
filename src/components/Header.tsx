@@ -1,101 +1,171 @@
-import React from 'react';
-import Collection1 from '../assets/Collection1.jpg';
-import Collection2 from '../assets/Collection2.jpg';
-import Collection3 from '../assets/Collection3.jpg';
-import Collection4 from '../assets/Collection4.jpg';
+import React, { useState } from 'react';
+import { Menu, X, Search, ShoppingBag } from 'lucide-react';
+import SearchModal from './SearchModal';
 
-const ProductShowcase = () => {
-  const products = [
-    {
-      id: 1,
-      name: "PREMIUM REXINE COLLECTION",
-      description: "Luxury automotive grade rexine with superior durability and finish",
-      image: Collection1,
-      category: "rexine"
-    },
-    {
-      id: 2,
-      name: "SILK FIBER TREASURES",
-      description: "Premium silk fibers sourced from the finest silk farms",
-      image: Collection2,
-      category: "fiber"
-    },
-    {
-      id: 3,
-      name: "LUXURY TEXTILE COLLECTION",
-      description: "Handwoven premium textiles with intricate patterns and designs",
-      image: Collection3,
-      category: "textile"
-    },
-    {
-      id: 4,
-      name: "PREMIUM FIBER BLEND",
-      description: "Exclusive blend of natural and synthetic fibers for superior quality",
-      image: Collection4,
-      category: "fiber"
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  ];
-
-  const handleProductClick = (product: typeof products[0]) => {
-    // Simulate product detail view
-    alert(`Viewing ${product.name}\n\nCategory: ${product.category.toUpperCase()}\nDescription: ${product.description}\n\nThis would normally open a detailed product page.`);
+    setIsMenuOpen(false);
   };
 
-  const handleViewAllProducts = () => {
-    alert('This would navigate to a complete product catalog page with filters for:\n\n• Premium Textiles\n• Luxury Rexines\n• High-Quality Fibers\n• Specialty Blends\n\nWith advanced search and filtering options.');
+  const handleProductCategory = (category: string) => {
+    console.log(`Navigating to ${category} category`);
+    scrollToSection('products');
+    // In a real app, this would filter products by category
+    setTimeout(() => {
+      alert(`Showing ${category} products. In a real application, this would filter the product catalog.`);
+    }, 500);
+  };
+
+  const handleCartClick = () => {
+    console.log('Cart clicked');
+    alert('Shopping cart functionality would be implemented here.');
   };
 
   return (
-    <section id="products" className="py-12 sm:py-16 lg:py-24 xl:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16 lg:mb-20 xl:mb-24">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 mb-3 sm:mb-4 tracking-[0.1em] sm:tracking-[0.15em] lg:tracking-[0.2em] px-4">
-            THE BESTSELLING COLLECTION
-          </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-gray-600 font-light tracking-wide max-w-2xl mx-auto px-4">
-            Discover our most popular premium textiles and materials
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-          {products.map((product, index) => (
-            <div key={product.id} className="group cursor-pointer"
-              onClick={() => console.log(`Product ${product.name} clicked`)}>
-              <div className="relative overflow-hidden">
-                <div className="aspect-w-1 aspect-h-1">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className={`w-full object-cover transform group-hover:scale-105 transition-transform duration-500 ${
-                      index % 2 === 0 ? 'h-64 sm:h-72 lg:h-80 xl:h-96' : 'h-56 sm:h-64 lg:h-72 xl:h-80'
-                    }`}
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-sm sm:text-base lg:text-lg font-light text-gray-900 mb-2 sm:mb-3 lg:mb-4 uppercase tracking-[0.1em] sm:tracking-[0.15em] leading-tight">
-                    {product.name}
-                  </h3>
-                  <p className="text-gray-600 text-xs sm:text-sm lg:text-sm leading-relaxed font-light tracking-wide">
-                    {product.description}
-                  </p>
-                </div>
+    <>
+      <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-40 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-light tracking-[0.2em] text-gray-900">
+                ARC DOT
+              </h1>
+            </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center space-x-8 xl:space-x-12">
+              <button 
+                onClick={() => handleProductCategory('Textiles')}
+                className="text-gray-700 hover:text-black transition-colors font-light tracking-wide text-sm xl:text-base"
+              >
+                Textiles
+              </button>
+              <button 
+                onClick={() => handleProductCategory('Rexines')}
+                className="text-gray-700 hover:text-black transition-colors font-light tracking-wide text-sm xl:text-base"
+              >
+                Rexines
+              </button>
+              <button 
+                onClick={() => handleProductCategory('Fibers')}
+                className="text-gray-700 hover:text-black transition-colors font-light tracking-wide text-sm xl:text-base"
+              >
+                Fibers
+              </button>
+              <button 
+                onClick={() => scrollToSection('collections')}
+                className="text-gray-700 hover:text-black transition-colors font-light tracking-wide text-sm xl:text-base"
+              >
+                Collections
+              </button>
+              <button 
+                onClick={() => scrollToSection('footer')}
+                className="text-gray-700 hover:text-black transition-colors font-light tracking-wide text-sm xl:text-base"
+              >
+                Contact
+              </button>
+            </nav>
+
+            {/* Desktop Actions */}
+            <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
+              <button 
+                onClick={() => setIsSearchOpen(true)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                aria-label="Search"
+              >
+                <Search className="h-5 w-5 text-gray-700" />
+              </button>
+              <button 
+                onClick={handleCartClick}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                aria-label="Shopping cart"
+              >
+                <ShoppingBag className="h-5 w-5 text-gray-700" />
+              </button>
+            </div>
+
+            {/* Mobile Actions */}
+            <div className="flex lg:hidden items-center space-x-3">
+              <button 
+                onClick={() => setIsSearchOpen(true)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                aria-label="Search"
+              >
+                <Search className="h-5 w-5 text-gray-700" />
+              </button>
+              <button 
+                onClick={handleCartClick}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                aria-label="Shopping cart"
+              >
+                <ShoppingBag className="h-5 w-5 text-gray-700" />
+              </button>
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                aria-label="Menu"
+              >
+                {isMenuOpen ? (
+                  <X className="h-6 w-6 text-gray-700" />
+                ) : (
+                  <Menu className="h-6 w-6 text-gray-700" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Menu */}
+          {isMenuOpen && (
+            <div className="lg:hidden border-t border-gray-100 bg-white">
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                <button 
+                  onClick={() => handleProductCategory('Textiles')}
+                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-black hover:bg-gray-50 transition-colors font-light tracking-wide"
+                >
+                  Textiles
+                </button>
+                <button 
+                  onClick={() => handleProductCategory('Rexines')}
+                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-black hover:bg-gray-50 transition-colors font-light tracking-wide"
+                >
+                  Rexines
+                </button>
+                <button 
+                  onClick={() => handleProductCategory('Fibers')}
+                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-black hover:bg-gray-50 transition-colors font-light tracking-wide"
+                >
+                  Fibers
+                </button>
+                <button 
+                  onClick={() => scrollToSection('collections')}
+                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-black hover:bg-gray-50 transition-colors font-light tracking-wide"
+                >
+                  Collections
+                </button>
+                <button 
+                  onClick={() => scrollToSection('footer')}
+                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-black hover:bg-gray-50 transition-colors font-light tracking-wide"
+                >
+                  Contact
+                </button>
               </div>
             </div>
-          ))}
+          )}
         </div>
+      </header>
 
-        {/* View All Button */}
-        <div className="text-center mt-12 sm:mt-16 lg:mt-20">
-          <button 
-            onClick={() => console.log('View all products clicked')}
-            className="border border-gray-900 text-gray-900 px-6 sm:px-8 lg:px-12 py-3 sm:py-4 font-light tracking-[0.1em] sm:tracking-[0.15em] text-sm sm:text-base hover:bg-gray-900 hover:text-white transition-all duration-300"
-          >
-            VIEW ALL PRODUCTS
-          </button>
-        </div>
-      </div>
-    </section>
+      {/* Search Modal */}
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+    </>
   );
 };
 
-export default ProductShowcase;
+export default Header;
