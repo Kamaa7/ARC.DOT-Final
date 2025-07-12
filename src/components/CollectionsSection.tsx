@@ -50,7 +50,7 @@ const CollectionsSection = () => {
             <div key={idx} className="w-full aspect-[3/2] sm:aspect-[5/3] md:aspect-[2/1] overflow-hidden rounded-lg group cursor-pointer relative bg-gray-100"
               onClick={() => {
                 console.log(`Collection ${idx + 1} clicked`);
-                alert(`Opening Collection ${idx + 1} gallery...`);
+                window.dispatchEvent(new CustomEvent('pageChange', { detail: { page: 'collections' } }));
               }}>
               <img
                 src={img}
@@ -72,7 +72,7 @@ const CollectionsSection = () => {
             <div key={idx} className="w-full aspect-[4/3] overflow-hidden rounded-lg group cursor-pointer relative bg-gray-100"
               onClick={() => {
                 console.log(`Collection ${idx + 1} clicked`);
-                alert(`Opening Collection ${idx + 1} gallery...`);
+                window.dispatchEvent(new CustomEvent('pageChange', { detail: { page: 'collections' } }));
               }}>
               <img
                 src={img}
@@ -93,7 +93,7 @@ const CollectionsSection = () => {
           <button 
             onClick={() => {
               console.log('View all collections clicked');
-              alert('Opening complete collections gallery...');
+              window.dispatchEvent(new CustomEvent('pageChange', { detail: { page: 'collections' } }));
             }}
             className="bg-gray-900 text-white px-6 sm:px-8 lg:px-12 py-3 sm:py-4 font-light tracking-[0.1em] sm:tracking-[0.15em] text-sm sm:text-base hover:bg-gray-800 transition-all duration-300 transform hover:scale-105"
           >

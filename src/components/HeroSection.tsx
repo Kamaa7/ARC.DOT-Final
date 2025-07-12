@@ -10,7 +10,7 @@ const HeroSection = () => {
   };
   return (
     <section
-      className="min-h-screen flex items-center relative overflow-hidden"
+      className="min-h-screen flex items-center relative overflow-hidden mt-30 sm:mt-36"
       style={{
         background: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${anyoneEveryone9}) center center / cover no-repeat`,
       }}

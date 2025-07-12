@@ -5,12 +5,25 @@ import SearchModal from './SearchModal';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState('home');
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    setIsMenuOpen(false);
+  };
+
+  const navigateToCollections = () => {
+    console.log('Navigating to collections page');
+    setCurrentPage('collections');
+    setIsMenuOpen(false);
+  };
+
+  const navigateToHome = () => {
+    console.log('Navigating to home page');
+    setCurrentPage('home');
     setIsMenuOpen(false);
   };
 
@@ -30,18 +43,27 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-40 border-b border-gray-100">
+      {/* Centered Logo Header */}
+      <div className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <h1 className="text-xl sm:text-2xl lg:text-3xl font-light tracking-[0.2em] text-gray-900">
-                ARC DOT
-              </h1>
-            </div>
+          <div className="flex items-center justify-center h-16 sm:h-20">
+            <button 
+              onClick={navigateToHome}
+              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light tracking-[0.2em] sm:tracking-[0.25em] lg:tracking-[0.3em] text-gray-900 hover:text-gray-700 transition-colors"
+            >
+              ARC DOT
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation Header */}
+      <header className="fixed top-16 sm:top-20 left-0 right-0 bg-white/95 backdrop-blur-sm z-40 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-14 sm:h-16">
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8 xl:space-x-12">
+            <nav className="hidden lg:flex items-center space-x-8 xl:space-x-12 mx-auto">
               <button 
                 onClick={() => handleProductCategory('Textiles')}
                 className="text-gray-700 hover:text-black transition-colors font-light tracking-wide text-sm xl:text-base"
@@ -61,7 +83,7 @@ const Header = () => {
                 Fibers
               </button>
               <button 
-                onClick={() => scrollToSection('collections')}
+                onClick={navigateToCollections}
                 className="text-gray-700 hover:text-black transition-colors font-light tracking-wide text-sm xl:text-base"
               >
                 Collections
@@ -75,7 +97,7 @@ const Header = () => {
             </nav>
 
             {/* Desktop Actions */}
-            <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
+            <div className="hidden lg:flex items-center space-x-4 xl:space-x-6 absolute right-0">
               <button 
                 onClick={() => setIsSearchOpen(true)}
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -93,7 +115,7 @@ const Header = () => {
             </div>
 
             {/* Mobile Actions */}
-            <div className="flex lg:hidden items-center space-x-3">
+            <div className="flex lg:hidden items-center space-x-3 ml-auto">
               <button 
                 onClick={() => setIsSearchOpen(true)}
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -145,7 +167,7 @@ const Header = () => {
                   Fibers
                 </button>
                 <button 
-                  onClick={() => scrollToSection('collections')}
+                  onClick={navigateToCollections}
                   className="block w-full text-left px-3 py-2 text-gray-700 hover:text-black hover:bg-gray-50 transition-colors font-light tracking-wide"
                 >
                   Collections
@@ -164,6 +186,11 @@ const Header = () => {
 
       {/* Search Modal */}
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      
+      {/* Pass navigation state to parent */}
+      {window.dispatchEvent && window.dispatchEvent(new CustomEvent('pageChange', { 
+        detail: { page: currentPage } 
+      }))}
     </>
   );
 };
